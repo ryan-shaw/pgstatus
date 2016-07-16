@@ -8,8 +8,6 @@ WORKDIR /data/pgstatus/
 
 RUN npm install
 
-COPY src/app /data/pgstatus/
-COPY src/public /data/pgstatus/
-COPY src/config.js src/index.js /data/pgstatus/
+COPY src/ /data/pgstatus/
 
 CMD ["node", "index.js"]
