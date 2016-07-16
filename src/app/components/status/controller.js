@@ -29,11 +29,10 @@ app.get = (req, res) => {
             }else if((down + unstable) > total / 2){
                 state = 'unstable'
             }
-        }else{
-            res.json({
-                status: state
-            });
         }
+        res.json({
+            status: state
+        });
     });
 };
 
