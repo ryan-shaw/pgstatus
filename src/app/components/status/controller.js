@@ -18,9 +18,22 @@ app.get = (req, res) => {
     })
     .then((data) => {
         // res.json(data);
-        res.json({
-            status: 'up'
-        });
+        let state = 'up';
+        let up = _.find(data, {state: 'up'}) || 0;
+        let down = _.find(data, {state: 'down'}) || 0;
+        let unstable = _.find(data, {state: 'unstable'});
+        let total = up + down + unstable;
+        if(data.length > 0){
+            if(down > total / 2){
+                state = 'down';
+            }else if((down + unstable) > total / 2){
+                state = 'unstable'
+            }
+        }else{
+            res.json({
+                status: state
+            });
+        }
     });
 };
 
