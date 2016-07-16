@@ -1,15 +1,26 @@
 
 const StatusModel = require('./model');
+const sequelize = require('../../../models').sequelize;
 const _ = require('lodash');
+const moment = require('moment');
 let app = {};
 
 app.get = (req, res) => {
-    StatusModel.findAll({})
+    // SELECT COUNT(*) as count, status FROM statuses WHERE createdAt > NOW() - INTERVAL 15 MINUTE GROUP BY status
+    StatusModel.findAll({
+        group: 'status',
+        where: {
+            createdAt: {
+                $gt: moment().subtract(15, 'minutes')
+            }
+        },
+        attributes: [[sequelize.fn('COUNT', sequelize.col('*')), 'count'], 'status']
+    })
     .then((data) => {
+        // res.json(data);
         res.json({
             status: 'up'
         });
-        console.log(data);
     });
 };
 
