@@ -10,8 +10,8 @@ const favicon = require('serve-favicon');
 
 const app = express();
 
-app.use(favicon(__dirname + '/app/public/favicon.ico'));
-app.use(express.static('app/public/'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(express.static('public/'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 require('./app/routes')(app)
