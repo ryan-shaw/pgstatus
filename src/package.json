@@ -1,0 +1,23 @@
+{
+  "name": "pgstatus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryan-shaw/pgstatus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryan-shaw/pgstatus/issues"
+  },
+  "homepage": "https://github.com/ryan-shaw/pgstatus#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "sequelize": "^3.23.4"
+  }
+}
