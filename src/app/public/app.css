@@ -1,0 +1,11 @@
+#status.unstable{
+    color:orange;
+}
+
+#status.up{
+    color: green;
+}
+
+#status.down{
+    color: red;
+}

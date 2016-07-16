@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+      <h4>High Availability Pokémon status page</h4>
+      <p>
+          Hosted on high availability infrastructure that scales with demand, count on this site remaining stable even when Pokémon Go does not.
+      </p>
+      <h1>Pokémon Go status: <span id="status" ng-class="{'unstable': status == 'unstable', 'up': status == 'up', 'down': status == 'down'}">{{status}}</span></h1>
+      <p>
+          Community driven Pokémon status updated.
+      </p>
+      <div class="btn-group btn-group-justified" role="group" aria-label="">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-warning" ng-class="{'disabled': posted}" ng-click="post('unstable')">UNSTABLE</button>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-success" ng-class="{'disabled': posted}" ng-click="post('up')">UP</button>
+          </div>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-danger" ng-class="{'disabled': posted}" ng-click="post('down')">DOWN</button>
+          </div>
+    </div>
+    <p ng-show="posted">
+        <span>Thanks for contributng your experience!</span>
+    </p>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+      We are not affiliated with The Pokémon Company or Niantic.
+  </div>
+</div>
