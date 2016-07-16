@@ -4,6 +4,8 @@ RUN mkdir -p /data/pgstatus
 
 COPY src/package.json /data/pgstatus/
 
+WORKDIR /data/pgstatus/
+
 RUN npm install
 
 CMD ["node", "index.js"]
