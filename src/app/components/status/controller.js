@@ -5,6 +5,15 @@ const _ = require('lodash');
 const moment = require('moment');
 let app = {};
 
+const getVal = (arr, status) => {
+    let state = _.find(arr, {status: status});
+    if(state){
+        return state.dataValues.count;
+    }else{
+        return 0;
+    }
+}
+
 app.get = (req, res) => {
     // SELECT COUNT(*) as count, status FROM statuses WHERE createdAt > NOW() - INTERVAL 15 MINUTE GROUP BY status
     StatusModel.findAll({
@@ -19,9 +28,9 @@ app.get = (req, res) => {
     .then((data) => {
         // res.json(data);
         let state = 'up';
-        let up = _.find(data, {state: 'up'}) || 0;
-        let down = _.find(data, {state: 'down'}) || 0;
-        let unstable = _.find(data, {state: 'unstable'});
+        let up = getVal(data, 'up');
+        let down = getVal(data, 'down');
+        let unstable = getVal(data, 'status');
         let total = up + down + unstable;
         if(data.length > 0){
             if(down > total / 2){
