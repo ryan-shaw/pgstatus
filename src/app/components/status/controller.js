@@ -30,8 +30,11 @@ app.get = (req, res) => {
         let state = 'up';
         let up = getVal(data, 'up');
         let down = getVal(data, 'down');
-        let unstable = getVal(data, 'status');
+        let unstable = getVal(data, 'unstable');
         let total = up + down + unstable;
+        console.log(`Up: ${up}`);
+        console.log(`Down: ${down}`);
+        console.log(`Unstable: ${unstable}`);
         if(data.length > 0){
             if(down > total / 2){
                 state = 'down';
