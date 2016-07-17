@@ -1,6 +1,8 @@
 if(process.env.NODE_ENV !== 'production'){
     require('dotenv').config();
     console.log('Starting in development mode...');
+}else{
+    require('newrelic');
 }
 
 const express = require('express');
